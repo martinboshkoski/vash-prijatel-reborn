@@ -9,6 +9,7 @@ const Header = () => {
     { to: "/", label: "Дома" },
     { to: "/about", label: "За Нас" },
     { to: "/services", label: "Услуги" },
+    { to: "/representatives", label: "Застапници" },
     { to: "/blog", label: "Блог" },
     { to: "/contact", label: "Контакт" },
   ];
