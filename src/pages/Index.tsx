@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import heroBg from "@/assets/hero-bg.png";
 
 const Index = () => {
   const features = [
@@ -35,7 +36,11 @@ const Index = () => {
 
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-primary py-20 text-primary-foreground">
-        <div className="container mx-auto px-4">
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-20"
+          style={{ backgroundImage: `url(${heroBg})` }}
+        />
+        <div className="container mx-auto px-4 relative z-10">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="mb-6 text-4xl font-bold md:text-6xl">
               Вашиот Пријател за Сигурна Иднина

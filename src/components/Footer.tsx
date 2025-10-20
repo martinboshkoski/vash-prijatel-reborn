@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, Facebook, Linkedin } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const Footer = () => {
@@ -46,11 +46,11 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="mb-4 text-sm font-semibold">Контакт</h3>
+          <h3 className="mb-4 text-sm font-semibold">Контакт</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li className="flex items-center gap-2">
                 <Phone className="h-4 w-4" />
-                <span>+389 2 XXX XXXX</span>
+                <span>048 400 098</span>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4" />
@@ -58,7 +58,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-2">
                 <MapPin className="h-4 w-4" />
-                <span>Скопје, Македонија</span>
+                <span>ул. Кузман Јосифоски Питу бр. 8 Прилеп</span>
               </li>
             </ul>
           </div>
@@ -72,6 +72,14 @@ const Footer = () => {
               <br />
               Недела: Затворено
             </p>
+            <div className="mt-4 flex gap-3">
+              <a href="https://www.facebook.com/vash.prijatel" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">
+                <Facebook className="h-5 w-5" />
+              </a>
+              <a href="http://www.linkedin.com/company/ваш-пријател-ад-прилеп" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">
+                <Linkedin className="h-5 w-5" />
+              </a>
+            </div>
           </div>
         </div>
 

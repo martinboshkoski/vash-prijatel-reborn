@@ -90,8 +90,7 @@ const Contact = () => {
                       <Phone className="h-6 w-6 text-primary mt-1" />
                       <div>
                         <h3 className="font-semibold">Телефон</h3>
-                        <p className="text-muted-foreground">+389 2 XXX XXXX</p>
-                        <p className="text-muted-foreground">+389 7X XXX XXX</p>
+                        <p className="text-muted-foreground">048 400 098</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
@@ -106,9 +105,7 @@ const Contact = () => {
                       <div>
                         <h3 className="font-semibold">Адреса</h3>
                         <p className="text-muted-foreground">
-                          ул. Примерна бр. XX
-                          <br />
-                          1000 Скопје, Македонија
+                          ул. Кузман Јосифоски Питу бр. 8 Прилеп
                         </p>
                       </div>
                     </div>
