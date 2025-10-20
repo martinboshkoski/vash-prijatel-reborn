@@ -1,7 +1,4 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -26,59 +23,6 @@ const Contact = () => {
         <section className="py-16">
           <div className="container mx-auto px-4">
             <div className="grid gap-8 lg:grid-cols-2">
-              {/* Contact Form */}
-              <Card>
-                <CardHeader>
-                  <CardTitle>Испратете Порака</CardTitle>
-                  <CardDescription>
-                    Пополнете ја формата и ние ќе ве контактираме најбрзо можно
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <form className="space-y-4">
-                    <div className="grid gap-4 sm:grid-cols-2">
-                      <div className="space-y-2">
-                        <label htmlFor="firstName" className="text-sm font-medium">
-                          Име
-                        </label>
-                        <Input id="firstName" placeholder="Вашето име" />
-                      </div>
-                      <div className="space-y-2">
-                        <label htmlFor="lastName" className="text-sm font-medium">
-                          Презиме
-                        </label>
-                        <Input id="lastName" placeholder="Вашето презиме" />
-                      </div>
-                    </div>
-                    <div className="space-y-2">
-                      <label htmlFor="email" className="text-sm font-medium">
-                        Е-маил
-                      </label>
-                      <Input id="email" type="email" placeholder="vasha@email.com" />
-                    </div>
-                    <div className="space-y-2">
-                      <label htmlFor="phone" className="text-sm font-medium">
-                        Телефон
-                      </label>
-                      <Input id="phone" type="tel" placeholder="+389 XX XXX XXX" />
-                    </div>
-                    <div className="space-y-2">
-                      <label htmlFor="message" className="text-sm font-medium">
-                        Порака
-                      </label>
-                      <Textarea
-                        id="message"
-                        placeholder="Вашата порака..."
-                        className="min-h-32"
-                      />
-                    </div>
-                    <Button type="submit" className="w-full">
-                      Испрати Порака
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
-
               {/* Contact Information */}
               <div className="space-y-6">
                 <Card>
@@ -132,14 +76,14 @@ const Contact = () => {
                   <CardContent>
                     <div className="aspect-video w-full overflow-hidden rounded-lg bg-muted">
                       <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47621.54676834717!2d21.38900895!3d41.99645975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13541455e3a0b0d5%3A0x7a1e7b5c5b5e7a1e!2sSkopje!5e0!3m2!1sen!2smk!4v1234567890123"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2964.1!2d21.551203!3d41.3443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1356ebe13575df9f%3A0xa870a48a56a5f420!2z0JLQkNCo0JAg0J_QoNCY0IjQkNCi0JXQmyDQkNCUINCf0YDQuNC70LXQvw!5e0!3m2!1sen!2smk!4v1234567890123"
                         width="100%"
                         height="100%"
                         style={{ border: 0 }}
                         allowFullScreen
                         loading="lazy"
                         referrerPolicy="no-referrer-when-downgrade"
-                        title="Локација на Ваш Пријател"
+                        title="Локација на Ваш Пријател - Прилеп"
                       ></iframe>
                     </div>
                   </CardContent>
