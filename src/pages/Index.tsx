@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import heroBg from "@/assets/hero-bg.png";
+import { InsuranceChat } from "@/components/InsuranceChat";
 
 const Index = () => {
   const features = [
@@ -43,33 +44,13 @@ const Index = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="mx-auto max-w-4xl">
             <div className="text-center mb-8">
-              <h1 className="mb-4 text-4xl font-bold md:text-6xl">
-                Вашиот Пријател за Сигурна Иднина
-              </h1>
               <p className="text-lg md:text-xl opacity-90">
                 Прашајте го нашиот AI асистент за било што поврзано со осигурување
               </p>
             </div>
             
             {/* Chat Interface */}
-            <div className="bg-background/95 backdrop-blur-sm rounded-2xl shadow-2xl p-6 border border-border">
-              <div className="flex items-start gap-3 mb-4">
-                <div className="flex-1">
-                  <textarea
-                    placeholder="Напишете ја вашата порака овде... (на пр. Кои видови осигурување нудите?)"
-                    className="w-full min-h-[120px] p-4 rounded-lg border border-input bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary resize-none"
-                  />
-                </div>
-              </div>
-              <div className="flex items-center justify-between">
-                <p className="text-sm text-muted-foreground">
-                  Напишете ја вашата порака и притиснете Испрати
-                </p>
-                <Button size="lg" className="px-8">
-                  Испрати
-                </Button>
-              </div>
-            </div>
+            <InsuranceChat />
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
               <Button asChild size="lg" variant="secondary">
