@@ -61,46 +61,54 @@ const Representatives = () => {
         {/* Personal Representatives Table */}
         <section className="py-16">
           <div className="container mx-auto px-4">
-            <Card className="mb-12">
-              <CardHeader>
+            <Card className="mb-12 shadow-lg border-0">
+              <CardHeader className="bg-primary/5 border-b">
                 <CardTitle className="text-2xl text-primary">
                   Лични Застапници
                 </CardTitle>
               </CardHeader>
-              <CardContent>
+              <CardContent className="p-0">
                 <div className="overflow-x-auto">
                   <Table>
                     <TableHeader>
-                      <TableRow>
-                        <TableHead className="font-semibold">П. Бр.</TableHead>
-                        <TableHead className="font-semibold">Име и презиме</TableHead>
-                        <TableHead className="font-semibold">
-                          Бр и датум на решение (лиценца за вршење на работи за застапување во осигурување)
+                      <TableRow className="bg-muted/50 hover:bg-muted/50">
+                        <TableHead className="font-bold text-foreground py-4 px-6 text-center w-16">П. Бр.</TableHead>
+                        <TableHead className="font-bold text-foreground py-4 px-6 min-w-[150px]">Име и презиме</TableHead>
+                        <TableHead className="font-bold text-foreground py-4 px-6 min-w-[280px]">
+                          Бр и датум на решение (лиценца)
                         </TableHead>
-                        <TableHead className="font-semibold">
-                          Вид на договор склучен со застапникот
+                        <TableHead className="font-bold text-foreground py-4 px-6 min-w-[180px]">
+                          Вид на договор
                         </TableHead>
-                        <TableHead className="font-semibold">
-                          Бр. и датум на договор за застапување или вработување
+                        <TableHead className="font-bold text-foreground py-4 px-6 min-w-[200px]">
+                          Бр. и датум на договор
                         </TableHead>
-                        <TableHead className="font-semibold">
-                          Друштво за осигурување (за кое лицето е овластено да врши работи на застапување)
+                        <TableHead className="font-bold text-foreground py-4 px-6 min-w-[250px]">
+                          Друштво за осигурување
                         </TableHead>
-                        <TableHead className="font-semibold">
-                          Класи на осигурување (за кое лицето е овластено да врши работи на застапување)
+                        <TableHead className="font-bold text-foreground py-4 px-6 text-center min-w-[100px]">
+                          Класи
                         </TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
                       {personalRepresentatives.map((rep, index) => (
-                        <TableRow key={index}>
-                          <TableCell>{index + 1}.</TableCell>
-                          <TableCell className="font-medium">{rep.name}</TableCell>
-                          <TableCell>{rep.decisionNumber}</TableCell>
-                          <TableCell>{rep.contractType}</TableCell>
-                          <TableCell>{rep.contractDate}</TableCell>
-                          <TableCell>{rep.company}</TableCell>
-                          <TableCell>{rep.classes}</TableCell>
+                        <TableRow key={index} className="hover:bg-muted/30 transition-colors">
+                          <TableCell className="py-4 px-6 text-center font-medium text-muted-foreground">{index + 1}.</TableCell>
+                          <TableCell className="py-4 px-6 font-semibold text-foreground">{rep.name}</TableCell>
+                          <TableCell className="py-4 px-6 text-sm text-muted-foreground">{rep.decisionNumber}</TableCell>
+                          <TableCell className="py-4 px-6">
+                            <span className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+                              {rep.contractType}
+                            </span>
+                          </TableCell>
+                          <TableCell className="py-4 px-6 text-sm">{rep.contractDate}</TableCell>
+                          <TableCell className="py-4 px-6 text-sm">{rep.company}</TableCell>
+                          <TableCell className="py-4 px-6 text-center">
+                            <span className="inline-flex items-center rounded-md bg-accent px-2.5 py-1 text-xs font-medium text-accent-foreground">
+                              {rep.classes}
+                            </span>
+                          </TableCell>
                         </TableRow>
                       ))}
                     </TableBody>
@@ -110,56 +118,54 @@ const Representatives = () => {
             </Card>
 
             {/* Companies Table */}
-            <Card>
-              <CardHeader>
+            <Card className="shadow-lg border-0">
+              <CardHeader className="bg-primary/5 border-b">
                 <CardTitle className="text-2xl text-primary">
                   Друштва за Осигурување
                 </CardTitle>
               </CardHeader>
-              <CardContent>
+              <CardContent className="p-0">
                 <div className="overflow-x-auto">
                   <Table>
                     <TableHeader>
-                      <TableRow>
-                        <TableHead className="font-semibold">П. Бр.</TableHead>
-                        <TableHead className="font-semibold">Име и презиме</TableHead>
-                        <TableHead className="font-semibold">
-                          Назив на друштвото за осигурување
+                      <TableRow className="bg-muted/50 hover:bg-muted/50">
+                        <TableHead className="font-bold text-foreground py-4 px-6 text-center w-16">П. Бр.</TableHead>
+                        <TableHead className="font-bold text-foreground py-4 px-6 min-w-[200px]">Назив на друштвото</TableHead>
+                        <TableHead className="font-bold text-foreground py-4 px-6 min-w-[200px]">
+                          Седиште
                         </TableHead>
-                        <TableHead className="font-semibold">
-                          Седиште на друштвото за осигурување
+                        <TableHead className="font-bold text-foreground py-4 px-6 min-w-[180px]">
+                          Број и датум на договор
                         </TableHead>
-                        <TableHead className="font-semibold">
-                          Број и датум на договор (за вршење работи на застапување во осигурувањето)
+                        <TableHead className="font-bold text-foreground py-4 px-6 min-w-[200px]">
+                          Класи на осигурување
                         </TableHead>
-                        <TableHead className="font-semibold">
-                          Класи на осигурување (за кое друштвото за застапување во осиг. Е овластено да врши работи на застапување)
-                        </TableHead>
-                        <TableHead className="font-semibold">
-                          Интернет страница на друштвото за осигурување
+                        <TableHead className="font-bold text-foreground py-4 px-6 text-center min-w-[120px]">
+                          Веб-сајт
                         </TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
                       {companies.map((company, index) => (
-                        <TableRow key={index}>
-                          <TableCell>{index + 1}.</TableCell>
-                          <TableCell className="font-medium">{company.name}</TableCell>
-                          <TableCell>{company.company}</TableCell>
-                          <TableCell className="whitespace-pre-line">{company.address}</TableCell>
-                          <TableCell>{company.contractDate}</TableCell>
-                          <TableCell>{company.classes}</TableCell>
-                          <TableCell>
-                            {company.website && (
+                        <TableRow key={index} className="hover:bg-muted/30 transition-colors">
+                          <TableCell className="py-4 px-6 text-center font-medium text-muted-foreground">{index + 1}.</TableCell>
+                          <TableCell className="py-4 px-6 font-semibold text-foreground">{company.name}</TableCell>
+                          <TableCell className="py-4 px-6 text-sm whitespace-pre-line text-muted-foreground">{company.address || "—"}</TableCell>
+                          <TableCell className="py-4 px-6 text-sm">{company.contractDate || "—"}</TableCell>
+                          <TableCell className="py-4 px-6 text-sm">{company.classes}</TableCell>
+                          <TableCell className="py-4 px-6 text-center">
+                            {company.website ? (
                               <a
                                 href={company.website}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-1 text-primary hover:underline"
+                                className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1.5 text-xs font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
                               >
-                                <ExternalLink className="h-4 w-4" />
-                                <span>Веб-сајт</span>
+                                <ExternalLink className="h-3.5 w-3.5" />
+                                <span>Посети</span>
                               </a>
+                            ) : (
+                              <span className="text-muted-foreground">—</span>
                             )}
                           </TableCell>
                         </TableRow>
