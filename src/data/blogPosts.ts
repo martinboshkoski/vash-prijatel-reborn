@@ -127,7 +127,7 @@ export const blogPosts: BlogPost[] = [
     category: "Здравство",
     date: "1 Јануари 2025",
     readTime: "11 мин",
-    coverImage: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=1200&h=600&fit=crop",
+    coverImage: "https://plus.unsplash.com/premium_photo-1675808577336-fe04a814393e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     ctaTitle: "Грижа за вашето здравје е приоритет",
     ctaDescription: "Осигурете се дека имате правилна здравствена заштита. Нашите полиси покриваат широк спектар на медицински услуги.",
     ctaButtonText: "Побарајте понуда за здравствено осигурување",
