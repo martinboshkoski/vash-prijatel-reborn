@@ -85,9 +85,9 @@ const Blog = () => {
             <h2 className="mb-4 text-3xl font-bold text-primary">
               Останете Информирани
             </h2>
-            <p className="mb-8 text-lg text-muted-foreground">
+            {/* <p className="mb-8 text-lg text-muted-foreground">
               Претплатете се на нашиот билтен за најнови совети и понуди
-            </p>
+            </p> */}
           </div>
         </section>
       </main>
