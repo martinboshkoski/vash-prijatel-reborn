@@ -66,36 +66,23 @@ const BlogPost = () => {
               <div className="grid lg:grid-cols-12 gap-12">
                 
                 {/* Article Content */}
-                <div className="lg:col-span-8">
-                  {/* Featured Image */}
-                  {post.coverImage && (
-                    <div className="mb-12 -mt-20 relative z-20">
-                      <div className="overflow-hidden rounded-2xl shadow-2xl ring-1 ring-black/5">
-                        <img 
-                          src={post.coverImage} 
-                          alt={post.title}
-                          className="w-full h-[280px] sm:h-[350px] md:h-[420px] object-cover"
-                        />
-                      </div>
-                    </div>
-                  )}
-
+                <div className="lg:col-span-9">
                   {/* Article Body */}
-                  <article 
+                  <article
                     className="prose prose-lg lg:prose-xl max-w-none
                       prose-headings:font-bold prose-headings:text-foreground prose-headings:tracking-tight
-                      prose-h2:text-2xl prose-h2:sm:text-3xl prose-h2:mt-14 prose-h2:mb-6 prose-h2:pb-4 prose-h2:border-b prose-h2:border-border
+                      prose-h2:text-2xl prose-h2:sm:text-3xl prose-h2:mt-14 prose-h2:mb-6 prose-h2:pb-4 prose-h2:border-b prose-h2:border-border prose-h2:font-bold
                       prose-h3:text-xl prose-h3:sm:text-2xl prose-h3:mt-10 prose-h3:mb-4
-                      prose-p:text-muted-foreground prose-p:leading-relaxed prose-p:text-base prose-p:sm:text-lg prose-p:mb-6
+                      prose-p:text-muted-foreground prose-p:leading-relaxed prose-p:text-base prose-p:sm:text-lg prose-p:my-[10px]
                       prose-a:text-primary prose-a:font-medium prose-a:no-underline hover:prose-a:underline
                       prose-strong:text-foreground prose-strong:font-semibold
                       prose-ul:my-8 prose-ul:space-y-3 prose-ul:pl-0
                       prose-li:text-muted-foreground prose-li:leading-relaxed prose-li:text-base prose-li:sm:text-lg prose-li:pl-0
-                      [&_ul]:list-none [&_li]:relative [&_li]:pl-8 
-                      [&_li]:before:content-[''] [&_li]:before:absolute [&_li]:before:left-0 [&_li]:before:top-2.5 
+                      [&_ul]:list-none [&_li]:relative [&_li]:pl-8
+                      [&_li]:before:content-[''] [&_li]:before:absolute [&_li]:before:left-0 [&_li]:before:top-2.5
                       [&_li]:before:w-2 [&_li]:before:h-2 [&_li]:before:bg-primary [&_li]:before:rounded-full
-                      [&_.lead]:text-lg [&_.lead]:sm:text-xl [&_.lead]:lg:text-2xl [&_.lead]:text-foreground 
-                      [&_.lead]:font-normal [&_.lead]:leading-relaxed [&_.lead]:mb-10 
+                      [&_.lead]:text-lg [&_.lead]:sm:text-xl [&_.lead]:lg:text-2xl [&_.lead]:text-foreground
+                      [&_.lead]:font-normal [&_.lead]:leading-relaxed [&_.lead]:mb-10
                       [&_.lead]:py-6 [&_.lead]:px-8 [&_.lead]:bg-muted/50 [&_.lead]:rounded-xl [&_.lead]:border-l-4 [&_.lead]:border-primary"
                     dangerouslySetInnerHTML={{ __html: post.content }}
                   />
@@ -119,7 +106,7 @@ const BlogPost = () => {
                 </div>
 
                 {/* Sidebar */}
-                <aside className="lg:col-span-4">
+                <aside className="lg:col-span-3">
                   <div className="sticky top-8 space-y-8">
                     
                     {/* CTA Card */}

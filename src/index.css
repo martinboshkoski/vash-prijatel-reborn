@@ -95,4 +95,15 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Blog post paragraph spacing */
+  article p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* Blog post heading styling */
+  article h2 {
+    font-weight: 700;
+  }
 }
