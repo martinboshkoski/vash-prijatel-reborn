@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { SEO } from "@/components/SEO";
 import { blogPosts } from "@/data/blogPosts";
 
 const BlogPost = () => {
@@ -16,22 +17,199 @@ const BlogPost = () => {
     return <Navigate to="/404" replace />;
   }
 
+  const currentUrl = `https://vashprijatel.mk/blog/${id}`;
+
+  // Convert Macedonian date format to ISO
+  const convertMacedonianDate = (dateStr: string): string => {
+    const monthMap: { [key: string]: string } = {
+      'Јануари': '01', 'Февруари': '02', 'Март': '03', 'Април': '04',
+      'Мај': '05', 'Јуни': '06', 'Јули': '07', 'Август': '08',
+      'Септември': '09', 'Октомври': '10', 'Ноември': '11', 'Декември': '12'
+    };
+
+    // Parse "15 Јануари 2025" format
+    const parts = dateStr.split(' ');
+    if (parts.length === 3) {
+      const day = parts[0].padStart(2, '0');
+      const month = monthMap[parts[1]] || '01';
+      const year = parts[2];
+      return `${year}-${month}-${day}T12:00:00+02:00`; // Macedonia timezone
+    }
+
+    // Fallback to current date if parsing fails
+    return new Date().toISOString();
+  };
+
+  const publishedDate = convertMacedonianDate(post.date);
+
+  // Generate SEO keywords based on category and content
+  const generateKeywords = () => {
+    const baseKeywords = "осигурување, Прилеп, Македонија, Ваш Пријател";
+    const categoryKeywords = {
+      "Животно Осигурување": "животно осигурување, животно осигурување Прилеп, животно осигурување Македонија, полиса животно осигурување",
+      "Авто Осигурување": "осигурување од автоодговорност, каско, АО ГО, осигурување за Вашиот автомобил Прилеп, каско осигурување Македонија",
+      "Имотно Осигурување": "имотно осигурување, осигурување на дом, осигурување на куќа, имотно осигурување Прилеп",
+      "Здравство": "здравствено осигурување, здравствена заштита, здравствено осигурување Прилеп, приватно здравствено осигурување",
+      "Деловно Осигурување": "деловно осигурување, осигурување на фирма, бизнис осигурување, деловно осигурување Прилеп",
+      "Патничко Осигурување": "патничко осигурување, патно осигурување, осигурување за патување, патничко осигурување Македонија"
+    };
+
+    return `${baseKeywords}, ${categoryKeywords[post.category as keyof typeof categoryKeywords] || post.category}`;
+  };
+
+  // Structured Data for Article (JSON-LD)
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "@id": `${currentUrl}#article`,
+        "headline": post.title,
+        "description": post.excerpt,
+        "image": post.coverImage,
+        "datePublished": publishedDate,
+        "dateModified": publishedDate,
+        "author": {
+          "@type": "Organization",
+          "name": "Ваш Пријател АД",
+          "url": "https://vashprijatel.mk",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://vashprijatel.mk/logo.png"
+          }
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Ваш Пријател АД",
+          "url": "https://vashprijatel.mk",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://vashprijatel.mk/logo.png"
+          },
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "ул. Кузман Јосифоски Питу бр. 8",
+            "addressLocality": "Прилеп",
+            "postalCode": "7500",
+            "addressCountry": "MK"
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+389-48-400-098",
+            "contactType": "customer service",
+            "areaServed": "MK",
+            "availableLanguage": "Macedonian"
+          }
+        },
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": currentUrl
+        },
+        "articleSection": post.category,
+        "inLanguage": "mk-MK",
+        "keywords": generateKeywords()
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${currentUrl}#breadcrumb`,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Почетна",
+            "item": "https://vashprijatel.mk"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Блог",
+            "item": "https://vashprijatel.mk/blog"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": post.title,
+            "item": currentUrl
+          }
+        ]
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://vashprijatel.mk/#organization",
+        "name": "Ваш Пријател АД",
+        "image": "https://vashprijatel.mk/logo.png",
+        "telephone": "+389-48-400-098",
+        "email": "info@vashprijatel.mk",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "ул. Кузман Јосифоски Питу бр. 8",
+          "addressLocality": "Прилеп",
+          "postalCode": "7500",
+          "addressCountry": "MK"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 41.3443,
+          "longitude": 21.551203
+        },
+        "url": "https://vashprijatel.mk",
+        "priceRange": "$$",
+        "areaServed": {
+          "@type": "GeoCircle",
+          "geoMidpoint": {
+            "@type": "GeoCoordinates",
+            "latitude": 41.3443,
+            "longitude": 21.551203
+          },
+          "geoRadius": "50000"
+        }
+      }
+    ]
+  };
+
   return (
     <div className="flex min-h-screen flex-col bg-background">
+      <SEO
+        title={`${post.title} | Ваш Пријател АД - Осигурување Прилеп`}
+        description={`${post.excerpt} Стручен совет од експертите на Ваш Пријател АД Прилеп.`}
+        image={post.coverImage}
+        url={currentUrl}
+        type="article"
+        keywords={generateKeywords()}
+        publishedTime={publishedDate}
+        modifiedTime={publishedDate}
+        article={{
+          category: post.category,
+          tags: [post.category, "осигурување", "Прилеп", "совети"]
+        }}
+        structuredData={structuredData}
+      />
       <Header />
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-primary via-primary to-primary/90 py-20 lg:py-28 text-primary-foreground">
+        <section className="relative overflow-hidden bg-gradient-to-br from-primary via-primary to-primary/80 py-20 lg:py-28 text-primary-foreground">
           {post.coverImage && (
-            <div 
-              className="absolute inset-0 bg-cover bg-center opacity-20"
+            <div
+              className="absolute inset-0 bg-cover bg-center opacity-35"
               style={{ backgroundImage: `url(${post.coverImage})` }}
             />
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent" />
           <div className="container mx-auto px-4 relative z-10">
             <div className="mx-auto max-w-4xl">
+              {/* Breadcrumbs */}
+              <nav className="mb-8 flex items-center gap-2 text-sm text-primary-foreground/80" aria-label="Breadcrumb">
+                <Link to="/" className="hover:text-primary-foreground transition-colors">
+                  Почетна
+                </Link>
+                <span>/</span>
+                <Link to="/blog" className="hover:text-primary-foreground transition-colors">
+                  Блог
+                </Link>
+                <span>/</span>
+                <span className="text-primary-foreground font-medium line-clamp-1">{post.category}</span>
+              </nav>
               <Link to="/blog">
                 <Button variant="ghost" size="sm" className="mb-8 hover:bg-primary-foreground/10 text-primary-foreground/80 hover:text-primary-foreground">
                   <ArrowLeft className="mr-2 h-4 w-4" />

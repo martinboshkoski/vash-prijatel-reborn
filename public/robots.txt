@@ -1,14 +1,26 @@
+# Robots.txt for Ваш Пријател АД - vashprijatel.mk
+# Insurance Agency in Prilep, Macedonia
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://vashprijatel.mk/sitemap.xml
+
+# Specific bot rules
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 0
 
 User-agent: Bingbot
 Allow: /
-
-User-agent: Twitterbot
-Allow: /
+Crawl-delay: 1
 
 User-agent: facebookexternalhit
 Allow: /
 
-User-agent: *
+User-agent: Twitterbot
 Allow: /

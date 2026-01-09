@@ -1,3 +1,6 @@
+# run in terminal:
+# ./quick-deploy.sh
+
 #!/bin/bash
 set -e
 

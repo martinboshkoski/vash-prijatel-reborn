@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
 interface Message {
@@ -10,10 +9,18 @@ interface Message {
   sources?: Array<{ document: string; page: number }>;
 }
 
+const CHATBASE_BOT_ID = "edL4mFRZdqn3LzFedVsO6";
+
 export const InsuranceChat = () => {
   const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<Message[]>([
+    {
+      role: "assistant",
+      content: "Здраво! Јас сум вашиот AI асистент за осигурување. Како можам да ви помогнам денес?"
+    }
+  ]);
   const [isLoading, setIsLoading] = useState(false);
+  const [conversationId, setConversationId] = useState<string>("");
   const { toast } = useToast();
 
   const handleSend = async () => {
@@ -25,18 +32,35 @@ export const InsuranceChat = () => {
     setIsLoading(true);
 
     try {
-      const { data, error } = await supabase.functions.invoke("chat", {
-        body: { message: userMessage },
+      const response = await fetch("https://www.chatbase.co/api/v1/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          messages: [{ content: userMessage, role: "user" }],
+          chatbotId: CHATBASE_BOT_ID,
+          stream: false,
+          conversationId: conversationId || undefined,
+        }),
       });
 
-      if (error) throw error;
+      if (!response.ok) {
+        throw new Error("Failed to get response from chatbot");
+      }
+
+      const data = await response.json();
+
+      // Store conversation ID for context
+      if (data.conversationId) {
+        setConversationId(data.conversationId);
+      }
 
       setMessages(prev => [
         ...prev,
         {
           role: "assistant",
-          content: data.reply,
-          sources: data.sources,
+          content: data.text || "Извинете, не можам да одговорам во моментот.",
         },
       ]);
     } catch (error) {
