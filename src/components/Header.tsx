@@ -11,7 +11,7 @@ const Header = () => {
     { to: "/services", label: "Услуги" },
     { to: "/representatives", label: "Застапници" },
     { to: "/blog", label: "Блог" },
-    { to: "https://vp-app-clients.onrender.com/clients", label: "Најави се" },
+    { to: "https://vp-app-clients.onrender.com/login", label: "Најави се" },
     { to: "/contact", label: "Контакт" },
   ];
 
